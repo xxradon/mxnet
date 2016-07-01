@@ -61,4 +61,4 @@ http://pan.baidu.com/s/1sjXKrqX
 
 * piiswrong and tqchen (for useful coding suggestions)
 
-
+在后面发现无法添加输入的mean图像，predict_cpp_with_mean.cc就是在第一个源文件上面添加了,mean输入的例子。
