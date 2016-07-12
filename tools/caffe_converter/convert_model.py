@@ -63,13 +63,10 @@ def main():
         if layer_type == 'Convolution' or layer_type == 'InnerProduct' or layer_type == 4 or layer_type == 14:
             assert(len(layer_blobs) == 2)
             wmat_dim = []
-            if getattr(layer_blobs[0].shape, 'dim', None) is not None:
-                if len(layer_blobs[0].shape.dim) > 0:
-                    wmat_dim = layer_blobs[0].shape.dim
-                else:
-                    wmat_dim = [layer_blobs[0].num, layer_blobs[0].channels, layer_blobs[0].height, layer_blobs[0].width]
+            if len(layer_blobs[0].shape.dim) > 0:
+                wmat_dim = layer_blobs[0].shape.dim
             else:
-                wmat_dim = list(layer_blobs[0].shape)
+                wmat_dim = [layer_blobs[0].num, layer_blobs[0].channels, layer_blobs[0].height, layer_blobs[0].width]
             wmat = np.array(layer_blobs[0].data).reshape(wmat_dim)
             bias = np.array(layer_blobs[1].data)
             if first_conv:
